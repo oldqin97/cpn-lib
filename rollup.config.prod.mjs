@@ -1,12 +1,12 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import getCpnPath from './utils/path.js';
-import getConfigList from './utils/configFn.js';
+import getCpnPath from './utils/path.mjs';
+import getConfigList from './utils/configFn.mjs';
 import {
   inputPath as inputPathFn,
   outputPath,
-} from './utils/inputPath.js';
+} from './utils/inputPath.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

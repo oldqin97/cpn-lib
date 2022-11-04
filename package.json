@@ -1,7 +1,6 @@
 {
   "name": "ui-lib",
   "version": "1.0.0",
-  "type": "module",
   "files": [
     "dist/"
   ],
@@ -16,7 +15,7 @@
   },
   "scripts": {
     "dev": "rollup -c rollup.config.dev.js",
-    "build": "rollup -c rollup.config.prod.js",
+    "build": "rollup -c rollup.config.prod.mjs",
     "cz": "git add . && git cz"
   },
   "devDependencies": {
