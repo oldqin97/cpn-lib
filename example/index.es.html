@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../dist/style/qwe.css" />
+  </head>
+  <body>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "./vue.es.js"
+        }
+      }
+    </script>
+
+    <div id="app">
+      {{ message }}
+      <my-button></my-button>
+    </div>
+
+    <script type="module">
+      import { createApp } from 'vue';
+      // import { button } from '../dist/myLib.dev.es.js';
+      import button from '../lib/button.js';
+
+      const app = createApp({
+        data() {
+          return {
+            message: 'Hello Vue!',
+          };
+        },
+      });
+      app.use(button);
+      app.mount('#app');
+    </script>
+  </body>
+</html>

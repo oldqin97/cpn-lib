@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../dist/style/index.css" />
+    <script src="./vue.umd.js"></script>
+    <script src="../dist/myLib.dev.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <my-button></my-button>
+    </div>
+    <script type="module">
+      const app = Vue.createApp({
+        setup() {
+          var message = 'hello rollup';
+          return {
+            message,
+          };
+        },
+      });
+      app.use(myLib.default);
+      app.mount('#app');
+    </script>
+  </body>
+</html>
