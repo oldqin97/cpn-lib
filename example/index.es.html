@@ -38,8 +38,8 @@
 
     <script type="module">
       import { createApp } from 'vue';
-      // import lib from '../dist/myLib.dev.es.js';
-      import { LibFold } from '../dist/myLib.dev.es.js';
+      import lib from '../dist/myLib.dev.es.js';
+      // import { LibFold } from '../dist/myLib.dev.es.js';
 
       const app = createApp({
         data() {
@@ -48,7 +48,9 @@
           };
         },
       });
-      app.use(LibFold);
+
+      app.use(lib);
+      // app.use(LibFold);
       app.mount('#app');
     </script>
   </body>

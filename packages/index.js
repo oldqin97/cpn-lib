@@ -1,4 +1,4 @@
-import LibFold from './component/fold/';
+import LibFold from './components/LibFold/';
 import './style/base.scss';
 
 const cpnList = [LibFold];

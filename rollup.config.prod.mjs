@@ -8,6 +8,11 @@ import {
   outputPath,
 } from './utils/inputPath.mjs';
 
+// 获取所有组件 { test: './packages/components/test/index.js' }
+const componentsObject = getCpnPath(
+  'packages/components/**/index.js',
+);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -15,10 +20,9 @@ const inputPath = inputPathFn(__dirname, './packages/index.js'); // 输入路径
 const outputUmdPath = outputPath(__dirname, './dist/myLib.dev.js'); // 输出路径
 const outputEsPath = outputPath(__dirname, './dist/myLib.dev.es.js'); // 输出路径
 
-const cpnPathList = getCpnPath();
-const cpnsConfigs = Object.keys(cpnPathList).map(name => {
+const cpnsConfigs = Object.keys(componentsObject).map(name => {
   const config = getConfigList(name, 'prod');
-  config.input = [cpnPathList[name]];
+  config.input = [componentsObject[name]];
   config.output = {
     file: `./lib/${name}.js`,
     format: 'es',
@@ -41,7 +45,6 @@ const allConfigs = {
     {
       file: outputEsPath,
       format: 'es',
-      name: 'myLib',
       sourcemap: false,
       globals: {
         vue: 'Vue',

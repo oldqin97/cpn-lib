@@ -24,13 +24,7 @@ export default {
 };
 </script>
 <script setup>
-import {
-  computed,
-  ref,
-  defineProps,
-  onMounted,
-  onUnmounted,
-} from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
   line: {
