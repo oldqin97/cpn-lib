@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "rollup -c rollup.config.dev.js",
     "build": "rollup -c rollup.config.prod.mjs",
-    "cz": "git add . && git cz"
+    "cz": "git add . && git cz && git push"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
