@@ -1,9 +1,14 @@
-import button from './component/button/';
+import LibFold from './component/fold/';
+import './style/base.scss';
+
+const cpnList = [LibFold];
 
 function install(Vue) {
-  Vue.use(button);
+  cpnList.forEach(item => {
+    Vue.use(item);
+  });
 }
 
-export { button };
+export { LibFold };
 
 export default install;

@@ -11,7 +11,7 @@
     <title>Document</title>
     <link
       rel="stylesheet"
-      href="../dist/style/qwe.css" />
+      href="../dist/style/index.css" />
   </head>
   <body>
     <script type="importmap">
@@ -23,14 +23,23 @@
     </script>
 
     <div id="app">
-      {{ message }}
-      <my-button></my-button>
+      <lib-fold
+        :line="1"
+        unfold>
+        <span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Consequuntur architecto, doloribus minima temporibus quas
+          laudantium autem iste, quae odit ratione eum, eveniet
+          cupiditate eos quia. Molestias error doloremque sint
+          numquam!
+        </span>
+      </lib-fold>
     </div>
 
     <script type="module">
       import { createApp } from 'vue';
-      // import { button } from '../dist/myLib.dev.es.js';
-      import button from '../lib/button.js';
+      // import lib from '../dist/myLib.dev.es.js';
+      import { LibFold } from '../dist/myLib.dev.es.js';
 
       const app = createApp({
         data() {
@@ -39,7 +48,7 @@
           };
         },
       });
-      app.use(button);
+      app.use(LibFold);
       app.mount('#app');
     </script>
   </body>

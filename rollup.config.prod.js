@@ -48,7 +48,7 @@ const allConfigs = {
       },
     },
   ],
-  ...getConfigList('qwe', 'prod'),
+  ...getConfigList('index', 'prod'),
   external: ['vue'],
 };
 

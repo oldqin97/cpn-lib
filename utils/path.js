@@ -1,6 +1,6 @@
 function getCpnPath() {
   return {
-    button: './packages/component/button/index.js',
+    LibFold: './packages/component/Fold/index.js',
   };
 }
 
