@@ -11,16 +11,17 @@
     <title>Document</title>
     <link
       rel="stylesheet"
-      href="../dist/style/index.css" />
+      href="../dist/theme-chalk/index.css" />
     <script src="./vue.umd.js"></script>
     <script src="../dist/myLib.dev.js"></script>
   </head>
   <body>
     <div id="app">
-      {{message}}
-      <my-button></my-button>
+      <lib-divider class="qwe">12312312</lib-divider>
     </div>
-    <script type="module">
+    <script>
+      console.log(myLib);
+
       const app = Vue.createApp({
         setup() {
           var message = 'hello rollup';

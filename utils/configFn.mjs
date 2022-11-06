@@ -7,6 +7,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import vue from 'rollup-plugin-vue';
 import json from '@rollup/plugin-json';
+import replacePlugin from '@rollup/plugin-replace';
 
 const configFn = (name = 'index', env = 'prod') => ({
   plugins: [
@@ -15,16 +16,21 @@ const configFn = (name = 'index', env = 'prod') => ({
     commonjs(),
     babel({
       exclude: 'node_modules/**',
-      presets: ['@babel/preset-env'],
       babelHelpers: 'bundled',
     }),
     postcss({
-      extract: `style/${name}.css`,
+      extract: `theme-chalk/${name}.css`,
       extensions: ['.css', '.scss'],
       plugins: [autoprefixer(), env === 'prod' ? cssnano() : ''],
     }),
     env === 'prod' ? terser() : '',
     json(),
+    replacePlugin({
+      'process.env.NODE_ENV': JSON.stringify(
+        env === 'prod' ? 'production' : 'development',
+      ),
+      'preventAssignment': true,
+    }),
   ],
 });
 

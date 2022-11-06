@@ -8445,7 +8445,7 @@ function baseCreateRenderer(options, createHydrationFns) {
           // - In the case of a component, it could contain anything.
           oldVNode.shapeFlag &
             (6 /* ShapeFlags.COMPONENT */ |
-              64) /* ShapeFlags.TELEPORT */)
+              64)) /* ShapeFlags.TELEPORT */
           ? hostParentNode(oldVNode.el)
           : // In other cases, the parent container is not actually used so we
             // just pass the block element here to avoid a DOM parentNode call.
@@ -9517,7 +9517,7 @@ function baseCreateRenderer(options, createHydrationFns) {
         // #1153: fast path should not be taken for non-stable (v-for) fragments
         (type !== Fragment ||
           (patchFlag > 0 &&
-            patchFlag & 64) /* PatchFlags.STABLE_FRAGMENT */)
+            patchFlag & 64)) /* PatchFlags.STABLE_FRAGMENT */
       ) {
         // fast path for block nodes: only need to unmount dynamic children.
         unmountChildren(
@@ -9531,7 +9531,7 @@ function baseCreateRenderer(options, createHydrationFns) {
         (type === Fragment &&
           patchFlag &
             (128 /* PatchFlags.KEYED_FRAGMENT */ |
-              256) /* PatchFlags.UNKEYED_FRAGMENT */) ||
+              256)) /* PatchFlags.UNKEYED_FRAGMENT */ ||
         (!optimized && shapeFlag & 16) /* ShapeFlags.ARRAY_CHILDREN */
       ) {
         unmountChildren(children, parentComponent, parentSuspense);
@@ -17605,9 +17605,11 @@ const transformElement = (node, context) => {
     node = context.currentNode;
     if (
       !(
-        node.type === 1 /* NodeTypes.ELEMENT */ &&
-        (node.tagType === 0 /* ElementTypes.ELEMENT */ ||
-          node.tagType === 1) /* ElementTypes.COMPONENT */
+        (
+          node.type === 1 /* NodeTypes.ELEMENT */ &&
+          (node.tagType === 0 /* ElementTypes.ELEMENT */ ||
+            node.tagType === 1)
+        ) /* ElementTypes.COMPONENT */
       )
     ) {
       return;

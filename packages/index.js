@@ -1,7 +1,8 @@
 import LibFold from './components/LibFold/';
+import LibDivider from './components/LibDivider/';
 import './style/base.scss';
 
-const cpnList = [LibFold];
+const cpnList = [LibFold, LibDivider];
 
 function install(Vue) {
   cpnList.forEach(item => {
@@ -9,6 +10,6 @@ function install(Vue) {
   });
 }
 
-export { LibFold };
+export { LibFold, LibDivider };
 
 export default install;
