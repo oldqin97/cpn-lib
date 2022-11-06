@@ -1,7 +1,7 @@
 /*
  * @Author: qin
  * @Date: 2022-11-04 23:19:42
- * @LastEditTime: 2022-11-06 17:06:17
+ * @LastEditTime: 2022-11-06 18:22:34
  * @FilePath: /ui-lib/utils/configFn.mjs
  *  -> The best way to explain it is to do it
  */
@@ -17,6 +17,7 @@ import json from '@rollup/plugin-json';
 import replacePlugin from '@rollup/plugin-replace';
 import svgPlugin from 'rollup-plugin-svg-sprites';
 // import svgDe from 'rollup-plugin-svg-sprite-deterministic';
+import contextRequire from '@godxiaoji/rollup-plugin-require-context';
 
 const configFn = (name = 'index', env = 'prod') => ({
   plugins: [
@@ -40,6 +41,7 @@ const configFn = (name = 'index', env = 'prod') => ({
       ),
       'preventAssignment': true,
     }),
+    contextRequire(),
     svgPlugin({
       symbolId(filename) {
         const fileArr = filename.split('/');

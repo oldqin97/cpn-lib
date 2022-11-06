@@ -1,8 +1,12 @@
 <template>
+  <i
+    class="iconfont"
+    v-if="className"
+    :class="className"></i>
   <svg
+    v-else
     class="xxx-svg-icon"
     aria-hidden="true"
-    :style="externalStyle"
     v-bind="$attrs">
     <use :xlink:href="iconName"></use>
   </svg>
@@ -18,12 +22,15 @@ import { computed } from 'vue';
 const props = defineProps({
   icon: {
     type: String,
-    required: true,
+    default: '',
+  },
+  className: {
+    type: String,
+    default: '',
   },
 });
-console.log(props.externalStyle);
 
-const iconName = computed(() => `#icons-${props.icon}`);
+const iconName = computed(() => `#${props.icon}`);
 </script>
 
 <style lang="scss" scoped>

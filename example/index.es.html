@@ -1,3 +1,10 @@
+<!--
+ * @Author: qin
+ * @Date: 2022-11-04 22:32:43
+ * @LastEditTime: 2022-11-06 23:20:34
+ * @FilePath: /ui-lib/example/index.es.html
+ *  -> The best way to explain it is to do it
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -29,18 +36,17 @@
     </style>
     <div id="app">
       <lib-icons
+        @click="handleClick"
         class="qwe"
-        icon="pine"></lib-icons>
+        class-name="icon-brush">
+      </lib-icons>
     </div>
-    <!-- <svg
-      aria-hidden="true"
-      class="svg-icon">
-      <use xlink:href="#icons-pine"></use>
-    </svg> -->
 
     <script type="module">
-      import { createApp } from 'vue';
-      import lib from '../dist/myLib.dev.es.js';
+      import { createApp, h } from 'vue';
+      import myLib, { LibMessage } from '../dist/myLib.dev.es.js';
+      // import { LibIcons } from '../dist/myLib.dev.es.js';
+      // import '../dist/myLibIcons.dev.es.js';
 
       const app = createApp({
         data() {
@@ -48,11 +54,31 @@
             message: 'Hello Vue!',
           };
         },
+        setup() {
+          const handleClick = () => {
+            LibMessage({
+              text: '123',
+              type: 'success',
+              icon: 'icon-brush',
+            });
+            // LibMessage({
+            //   text: h('h1', null, '这是vNode'),
+            // });
+          };
+          return {
+            handleClick,
+          };
+        },
       });
 
-      app.use(lib);
-      // app.use(LibFold);
+      app.use(myLib);
+      app.use(LibMessage);
       app.mount('#app');
+      setTimeout(() => {
+        app.config.globalProperties.$message({
+          text: h('h1', null, 'this is a vNode'),
+        });
+      }, 3000);
     </script>
   </body>
 </html>
