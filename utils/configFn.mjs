@@ -1,3 +1,10 @@
+/*
+ * @Author: qin
+ * @Date: 2022-11-04 23:19:42
+ * @LastEditTime: 2022-11-06 17:06:17
+ * @FilePath: /ui-lib/utils/configFn.mjs
+ *  -> The best way to explain it is to do it
+ */
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { babel } from '@rollup/plugin-babel';
@@ -8,6 +15,8 @@ import cssnano from 'cssnano';
 import vue from 'rollup-plugin-vue';
 import json from '@rollup/plugin-json';
 import replacePlugin from '@rollup/plugin-replace';
+import svgPlugin from 'rollup-plugin-svg-sprites';
+// import svgDe from 'rollup-plugin-svg-sprite-deterministic';
 
 const configFn = (name = 'index', env = 'prod') => ({
   plugins: [
@@ -30,6 +39,12 @@ const configFn = (name = 'index', env = 'prod') => ({
         env === 'prod' ? 'production' : 'development',
       ),
       'preventAssignment': true,
+    }),
+    svgPlugin({
+      symbolId(filename) {
+        const fileArr = filename.split('/');
+        return 'icons-' + fileArr[fileArr.length - 1].split('.')[0];
+      },
     }),
   ],
 });

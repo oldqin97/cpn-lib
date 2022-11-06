@@ -22,14 +22,25 @@
       }
     </script>
 
+    <style>
+      .qwe {
+        font-size: 50px;
+      }
+    </style>
     <div id="app">
-      <lib-divider position="right">1312312</lib-divider>
+      <lib-icons
+        class="qwe"
+        icon="pine"></lib-icons>
     </div>
+    <!-- <svg
+      aria-hidden="true"
+      class="svg-icon">
+      <use xlink:href="#icons-pine"></use>
+    </svg> -->
 
     <script type="module">
       import { createApp } from 'vue';
       import lib from '../dist/myLib.dev.es.js';
-      // import { LibFold } from '../dist/myLib.dev.es.js';
 
       const app = createApp({
         data() {
